@@ -11,7 +11,10 @@ from __future__ import unicode_literals
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.utils.translation import ugettext_lazy as _
+if django.VERSION >= (2, 0):
+    from django.utils.translation import gettext_lazy as _
+else:
+    from django.utils.translation import ugettext_lazy as _
 
 from .users import UserModel
 from .users import UsernameField
